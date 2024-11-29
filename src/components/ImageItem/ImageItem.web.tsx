@@ -70,14 +70,13 @@ const ImageItem = ({
         <View
           ref={containerRef}
           style={styles.imageContainer}
-          onDoubleClick={handleDoubleClick}
+          onClick={handleDoubleClick}
         >
           {(!isLoaded || !imageDimensions) && <ImageLoading />}
           <Animated.Image
             source={imageSrc}
-            style={[imageStyles, { transform: [{ scale }] }]}
+            style={[styles.image]}
             onLoad={() => setLoaded(true)}
-            resizeMode="contain"
           />
         </View>
       </TouchableWithoutFeedback>
@@ -89,13 +88,18 @@ const styles = StyleSheet.create({
   container: {
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
-    overflow: "hidden",
   },
   imageContainer: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
   },
 });
 
